@@ -1,6 +1,6 @@
 {
   "sepolia": {
-    "NFTcontract": {
+    "NFT721": {
       "address": "0x84311500058E4AA817f7b8C02f2Ea44f8cae2304",
       "startBlock": 6116020
     }
