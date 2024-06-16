@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 import { Box, Text, Button, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react';
 import { useWeb3ModalProvider, useWeb3ModalAccount } from '@web3modal/ethers/react'
-import NFT721 from '../contracts/NFT721.json';
+import NFT721 from '../../contracts/NFT721.json';
 
 const NftForm: React.FC = () => {
   const [name, setName] = useState('');
   const [symbol, setSymbol] = useState('');
   const [maxSupply, setMaxSupply] = useState('');
   const [tokenURI, setTokenURI] = useState('');
-  const [contractAddress, setContractAddress] = useState('');
+  const [contractAddress, setContractAddress] = useState('0x84311500058E4AA817f7b8C02f2Ea44f8cae2304');
   const { address, isConnected } = useWeb3ModalAccount()
   const { walletProvider } = useWeb3ModalProvider()
 

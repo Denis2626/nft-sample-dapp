@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import { Box, Heading, Flex, Spacer } from '@chakra-ui/react';
-import NftForm from '../components/NftForm';
+import NftForm from './components/NftForm';
+import NFTList from './components/NftList';
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
         </Box>
       </Flex>
       <NftForm />
-
+      <NFTList />
     </Box>
   );
 };

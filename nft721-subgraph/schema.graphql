@@ -44,6 +44,12 @@ type OwnershipTransferred @entity(immutable: true) {
   transactionHash: Bytes!
 }
 
+type NFT @entity {
+  id: ID!
+  owner: Bytes!
+  tokenURI: String!
+}
+
 type Transfer @entity(immutable: true) {
   id: Bytes!
   from: Bytes! # address

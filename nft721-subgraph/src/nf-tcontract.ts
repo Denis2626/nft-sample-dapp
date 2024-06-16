@@ -5,15 +5,18 @@ import {
   MetadataUpdate as MetadataUpdateEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
   Transfer as TransferEvent
-} from "../generated/NFT721/NFT721"
+} from "../generated/NFTcontract/NFTcontract"
 import {
   Approval,
   ApprovalForAll,
   BatchMetadataUpdate,
   MetadataUpdate,
   OwnershipTransferred,
-  Transfer
+  Transfer,
+  NFT
 } from "../generated/schema"
+import { NFTcontract } from "../generated/NFTcontract/NFTcontract"
+import { BigInt, Address } from "@graphprotocol/graph-ts"
 
 export function handleApproval(event: ApprovalEvent): void {
   let entity = new Approval(
@@ -103,4 +106,26 @@ export function handleTransfer(event: TransferEvent): void {
   entity.transactionHash = event.transaction.hash
 
   entity.save()
+
+  // Fetch and save the NFT entity
+  let tokenId = event.params.tokenId.toString()
+  let nft = NFT.load(tokenId)
+
+  if (!nft) {
+    nft = new NFT(tokenId)
+    nft.tokenURI = fetchTokenURI(event.address, event.params.tokenId)
+  }
+  
+  nft.owner = event.params.to
+  nft.save()
+}
+
+function fetchTokenURI(contractAddress: Address, tokenId: BigInt): string {
+  let contract = NFTcontract.bind(contractAddress)
+  let tokenURIResult = contract.try_tokenURI(tokenId)
+  
+  if (!tokenURIResult.reverted) {
+    return tokenURIResult.value
+  }
+  return ""
 }
