@@ -2,6 +2,10 @@
 
 This repository contains the code for a sample decentralized application (DApp) that interacts with an NFT (Non-Fungible Token) contract.
 
+<img width="1053" alt="image" src="https://github.com/DenisIvanov26/nft-sample-dapp/assets/23619112/97987f31-d712-4f51-a739-ac96e1705fa7">
+<img width="1039" alt="image" src="https://github.com/DenisIvanov26/nft-sample-dapp/assets/23619112/a969e747-56b0-4f4f-a494-263e71c2b471">
+
+
 ## Structure
 
 The repository is divided into three main parts:
